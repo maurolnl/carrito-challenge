@@ -19,7 +19,7 @@ export default {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(idProductos),
+      body: JSON.stringify({itemsId: idProductos}),
     })
     .then(response => response.json())
     .catch(error => {
