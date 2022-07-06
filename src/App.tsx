@@ -14,7 +14,6 @@ function App() {
       const apiProductos = await api.getProducts();
 
       setProductos(apiProductos);
-      console.log(apiProductos);
       
     } catch (error){
       setError(true);
@@ -27,9 +26,21 @@ function App() {
   }, [handleFetchData]);
 
   if (error) {
-    console.log(error);
+    return (
+      <div
+        className="min-h-full bg-fixed"
+        style={{ backgroundImage: "url(background.webp)" }}
+      >
+        <HeaderComponent onClick={() => setShowCarrito(!showCarrito)} />
+        <div className="flex justify-center min-h-full">
+          <div className="max-w-lg w-full py-16">
+            <span className="text-white font-bold">Error fetching products</span>
+          </div>
+        </div>
+      </div>
+    )
   }
-
+  
   return (
     <div
       className="min-h-full bg-fixed"
@@ -38,7 +49,10 @@ function App() {
       <HeaderComponent onClick={() => setShowCarrito(!showCarrito)} />
       <div className="flex justify-center min-h-full">
         <div className="max-w-lg w-full py-16">
-          {showCarrito ? <CarritoComponent /> : <ListadoProductosComponent productos={productos} />}
+          {showCarrito ? 
+            <CarritoComponent onClick={() => setShowCarrito(false)} /> 
+            : productos && <ListadoProductosComponent productos={productos} />
+          }
         </div>
       </div>
     </div>
