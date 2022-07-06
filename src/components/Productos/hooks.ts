@@ -4,7 +4,7 @@ import { useCarrito } from "../Carrito/context";
 
 export const useConstraints = (id: number, precio: number, categoria: string) => {
   const [isDisabled, setDisable] = useState<boolean>(false);
-  const {carrito, gemas } = useCarrito();
+  const { carrito, gemas } = useCarrito();
 
   useEffect(() => {
     if (gemas < precio) {

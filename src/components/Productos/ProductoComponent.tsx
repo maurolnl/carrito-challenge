@@ -19,7 +19,7 @@ const ProductoComponent:React.FC<Props> = ({producto}) => {
         </span>
       </div>
       <div className="w-full flex justify-center">
-        <img alt="imagen-posión" className=" h-28 w-28" src={imagen}/>
+        <img alt="imagen-posión" className="h-28 w-28" src={imagen}/>
       </div>
       <span className="text-white text-base font-bold">{nombre}</span>
       <span className="text-base font-bold text-stone-400">{descripcion}</span>

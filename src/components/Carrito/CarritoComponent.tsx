@@ -23,7 +23,6 @@ export const CarritoComponent: React.FC<Props> = ({onClick}) => {
     
     try {
       const response = await api.postOrder(idProductos);
-      console.log(response);
       
       if (response) {
         setSuccess(true);
