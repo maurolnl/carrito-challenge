@@ -40,7 +40,9 @@ export const CarritoComponent: React.FC<Props> = ({onClick}) => {
 
   return (
     <div className="flex flex-col gap-7">
-      <button className="rounded-2xl bg-violet-600 h-10 text-white font-bold text-base hover:bg-violet-500 hover:ease-in duration-100 px-3 w-fit" onClick={onClick}>Volver</button>
+      <button className="btn-primary px-3 w-fit" onClick={onClick}>
+        Volver
+      </button>
       <div className={`flex flex-col ${error || success ? "bg-transparent" : "bg-stone-700"}`}>
         {success || error ? (
           success ? (
@@ -63,11 +65,11 @@ export const CarritoComponent: React.FC<Props> = ({onClick}) => {
         )}
       </div>
       <button 
-        className="rounded-2xl bg-violet-600 h-10 text-white font-bold text-base hover:bg-violet-500 hover:ease-in duration-100 w-full"
+        className="btn-primary w-full"
         onClick={handleBuy}
       >
         Comprar
-        </button>
+      </button>
     </div>
   );
 };

@@ -26,7 +26,7 @@ const ProductoComponent:React.FC<Props> = ({producto}) => {
       <button 
         disabled={isDisabled} 
         onClick={() => addProduct(producto)} 
-        className="w-full rounded-2xl bg-violet-600 h-10 text-white font-bold text-base hover:bg-violet-500 hover:scale-105 hover:ease-in duration-100 disabled:bg-stone-500 disabled:cursor-not-allowed disabled:scale-100"
+        className="btn-primary w-full"
       >
         Agregar
       </button>
