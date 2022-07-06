@@ -12,7 +12,7 @@ export const ListadoProductosComponent = () => {
 
   return (
     <div className="grid grid-cols-1 justify-items-center gap-4 sm:grid-cols-2">
-      {productos.map(producto => (
+      {productos && productos.map(producto => (
         <ProductoComponent key={producto.id} producto={producto} />
       ))}
     </div>
