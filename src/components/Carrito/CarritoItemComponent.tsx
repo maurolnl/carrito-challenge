@@ -7,7 +7,7 @@ interface Props{
 
 const CarritoItemComponent: React.FC<Props> = ({id, nombre, imagen, onClick}) => {
   return (
-    <div key={id} className={`flex flex-row  border-b border-stone-400 py-2 px-3 items-center justify-between`}>
+    <div className={`flex flex-row  border-b border-stone-400 py-2 px-3 items-center justify-between`}>
     <div className="p-1 rounded-full bg-stone-400">
       <img alt={`imagen-${nombre}`} src={imagen} />
     </div>
