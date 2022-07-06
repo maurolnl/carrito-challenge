@@ -66,6 +66,7 @@ export const CarritoComponent: React.FC<Props> = ({onClick}) => {
       <button 
         className="btn-primary w-full"
         onClick={handleBuy}
+        disabled={carrito.length < 1}
       >
         Comprar
       </button>
