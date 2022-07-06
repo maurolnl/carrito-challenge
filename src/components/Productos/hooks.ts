@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import api from "../../api/api";
 import { useCarrito } from "../Carrito/context";
 
 export const useConstraints = (id: number, precio: number, categoria: string) => {
@@ -22,5 +23,31 @@ export const useConstraints = (id: number, precio: number, categoria: string) =>
 
   return {
     isDisabled,
+  }
+}
+
+export const useProducts = () => {
+  const [productos, setProductos] = useState<IProductos[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  
+  const handleFetchData = useCallback(async () => {
+    try {
+      const apiProductos = await api.getProducts();
+
+      setProductos(apiProductos);
+      
+    } catch (error){
+      setError(true);
+      console.log(error);
+    }
+  }, [setProductos, setError]);
+
+  useEffect(() => {
+    handleFetchData();
+  }, [handleFetchData]);
+
+  return {
+    productos,
+    error,
   }
 }

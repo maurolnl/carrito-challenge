@@ -1,45 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
-import api from "./api/api";
+import { useState } from "react";
 import { CarritoComponent } from "./components/Carrito/CarritoComponent";
 import { HeaderComponent } from "./components/HeaderComponent";
 import { ListadoProductosComponent } from "./components/Productos/ListadoProductosComponent";
 
 function App() {
   const [showCarrito, setShowCarrito] = useState<boolean>(false);
-  const [productos, setProductos] = useState<IProductos[]>([]);
-  const [error, setError] = useState<boolean>(false);
-  
-  const handleFetchData = useCallback(async () => {
-    try {
-      const apiProductos = await api.getProducts();
-
-      setProductos(apiProductos);
-      
-    } catch (error){
-      setError(true);
-      console.log(error);
-    }
-  }, [setProductos, setError]);
-
-  useEffect(() => {
-    handleFetchData();
-  }, [handleFetchData]);
-
-  if (error) {
-    return (
-      <div
-        className="min-h-full bg-fixed"
-        style={{ backgroundImage: "url(background.webp)" }}
-      >
-        <HeaderComponent onClick={() => setShowCarrito(!showCarrito)} />
-        <div className="flex justify-center min-h-full">
-          <div className="max-w-lg w-full py-16">
-            <span className="text-white font-bold">Error fetching products</span>
-          </div>
-        </div>
-      </div>
-    )
-  }
   
   return (
     <div
@@ -51,7 +16,7 @@ function App() {
         <div className="max-w-lg w-full py-16">
           {showCarrito ? 
             <CarritoComponent onClick={() => setShowCarrito(false)} /> 
-            : productos && <ListadoProductosComponent productos={productos} />
+            : <ListadoProductosComponent />
           }
         </div>
       </div>
